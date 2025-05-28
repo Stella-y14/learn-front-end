@@ -9,7 +9,7 @@ export default function App() {
   const [todos, setTodos] = useState(() => {
     const localValue = localStorage.getItem("ITEMS")
     if (localValue ==  null) return []
-    
+
     return JSON.parse(localValue)
   })
 
@@ -17,12 +17,12 @@ export default function App() {
     localStorage.setItem("ITEMS", JSON.stringify(todos))
   }, [todos])
 
-  function addTodo(title) {
+  function addTodo(content) {
     setTodos((currentTodos) => {
     return [
       ...currentTodos, 
       { id: crypto.randomUUID(), 
-      title, completed:false },
+      content, createdAt: new Date().toISOString()}
     ]
     })
   }
