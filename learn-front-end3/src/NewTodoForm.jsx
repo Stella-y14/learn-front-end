@@ -1,7 +1,6 @@
 import { useState } from "react"
 
-export function NewTodoForm(onSubmit) {
-    props.onSubmit
+export function NewTodoForm({ onSubmit }) {
     const [newItem, setNewItem] = useState("") // [value, function]
 
     function handleSubmit(e) {
@@ -10,7 +9,7 @@ export function NewTodoForm(onSubmit) {
 
         onSubmit(newItem)
 
-    setNewItem("")
+        setNewItem("")
     }
 
     return (
