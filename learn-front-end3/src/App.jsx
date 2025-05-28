@@ -33,7 +33,7 @@ function toggleTodo(id, completed) {
 
 function deleteTodo(id) {
   setTodos(currentTodos => {
-    return currentTodos.filter(todo => todo.id === id)
+    return currentTodos.filter(todo => todo.id !== id)
   })
 }
 
