@@ -16,9 +16,20 @@ export default function App() {
         title: newItem, completed:false },
     ]
   })
+
+  setNewItem("")
 }
 
-  console.log(todos)
+function toggleTodo(id, completed) {
+  setTodos(currentTodos => {
+    return currentTodos.map(todo => {
+      if (todo.id === id) {
+      return { ...todo, completed }
+      }
+      return todo
+    })
+  })
+}
 
   return (
     <>
@@ -37,9 +48,10 @@ export default function App() {
     <ul className="list">
       {todos.map(todo =>  {
         return (
-          <li>
+          <li key={todo.id}>
             <label>
-              <input type="checkbox" checked={todo.completed} />
+              <input type="checkbox" checked={todo.completed}
+              onChange={e => toggleTodo(todo.id, e.target.checked)} />
               {todo.title}
             </label>
             <button className="bun  btn-danger">Delete</button>
