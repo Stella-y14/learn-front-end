@@ -33,13 +33,13 @@ function toggleTodo(id, completed) {
 
 function deleteTodo(id) {
   setTodos(currentTodos => {
-    return currentTodos.filter(todo => todo.id == id)
+    return currentTodos.filter(todo => todo.id === id)
   })
 }
 
   return (
     <>
-    <form onSubmit={handleSubmit} className="new-iten-form">
+    <form onSubmit={handleSubmit} className="new-item-form">
     <div className="form-row">
       <label htmlFor="item">New Item</label>
       <input 
@@ -63,8 +63,8 @@ function deleteTodo(id) {
               {todo.title}
             </label>
             <button 
-              onclick={() => deleteTodo(todo.id)} 
-              className="bun  btn-danger"
+              onClick={() => deleteTodo(todo.id)} 
+              className="btn btn-danger"
             >
               Delete
               </button>
