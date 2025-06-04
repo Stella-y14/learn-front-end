@@ -5,6 +5,7 @@ import './News.css'
 import userImg from '../assets/images/test1.png'
 import techImg from '../assets/images/test2.png'
 import NewsModal from './NewsModal'
+import Bookmark from './Bookmark'
 
 const News = () => {
     const articles = [
@@ -72,7 +73,6 @@ const News = () => {
                         {headline.title} <i className="fa-regular fa-bookmark bookmark"></i>
                     </h2>
                 </div>
-
                 <div className="news-grid">
                     {articles.map((article) => (
                     <div
@@ -92,6 +92,7 @@ const News = () => {
             show={showModal} 
             article={selectedArticle} 
             onClose={() => setShowModal(false)} />
+            <Bookmark />
             <div className="my-blogs">My blogs</div>
             <div className="weather-calendar">
                 <Weather/>

@@ -1,6 +1,7 @@
 import React from 'react'
 import demoImg from '../assets/images/test2.png'
 import './NewsModal.css'
+import './Modal.css'
 
 const NewsModal = ({show, article, onClose}) => {
     if (!show) {
