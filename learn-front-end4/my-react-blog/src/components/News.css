@@ -111,8 +111,42 @@
 .categories {
     width: 100%;
     height: calc(80% - 2rem);
-        background-color: #111214;
+    background-color: #111214;
     border-radius: 1rem;
+    /* adjust categories pos */
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    padding: 2rem;
+}
+
+.nav-heading {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(1.5rem, 2.5cqi, 3rem);
+    color: #ddd;
+    letter-spacing: .2rem;
+    margin-bottom: 2rem;
+}
+
+.nav-links {
+    /* place vertically */
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+}
+
+.nav-link {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link i {
+    font-size: 1.7rem;
+    margin-left: 1rem;
 }
 
 .news-section {
