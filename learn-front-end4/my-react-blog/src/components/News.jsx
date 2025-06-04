@@ -4,6 +4,7 @@ import Calendar from './Calendar'
 import './News.css'
 import userImg from '../assets/images/test1.png'
 import techImg from '../assets/images/test2.png'
+import NewsModal from './NewsModal'
 
 const News = () => {
   return (
@@ -73,6 +74,7 @@ const News = () => {
                     </div>
                 </div>
             </div>
+            <NewsModal/>
             <div className="my-blogs">My blogs</div>
             <div className="weather-calendar">
                 <Weather/>
