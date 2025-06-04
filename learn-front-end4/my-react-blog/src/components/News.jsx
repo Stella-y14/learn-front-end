@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Weather from './Weather'
 import Calendar from './Calendar'
 import './News.css'
@@ -7,6 +7,13 @@ import techImg from '../assets/images/test2.png'
 import NewsModal from './NewsModal'
 
 const News = () => {
+    const [showModal, setShowModal] = useState(false)
+    const [selectedArticle, setSeletedArticle] = useState(null)
+
+    const handleArticle = (article) => {
+        setSeletedArticle(article)
+        setShowModal(true)
+    }
   return (
     <div className='news'>
         <header className='news-header'>
@@ -74,7 +81,10 @@ const News = () => {
                     </div>
                 </div>
             </div>
-            <NewsModal/>
+            <NewsModal 
+            show={showModal} 
+            article={selectedArticle} 
+            onClose={() => setShowModal(false)} />
             <div className="my-blogs">My blogs</div>
             <div className="weather-calendar">
                 <Weather/>
