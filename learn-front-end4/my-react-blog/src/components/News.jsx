@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Weather from './Weather'
 import Calendar from './Calendar'
 import './News.css'
@@ -8,6 +8,11 @@ import NewsModal from './NewsModal'
 import Bookmark from './Bookmark'
 
 const News = () => {
+    useEffect(() => {
+        const savedBookmarks = JSON.parse(localStorage.getItem("bookmarks")) || []
+        setBookmarks(savedBookmarks)
+    })
+
     const articles = [
         { id: 1, title: "Article 1", description: "Description 1", image: techImg },
         { id: 2, title: "Article 2", description: "Description 2", image: techImg },
@@ -39,6 +44,7 @@ const News = () => {
         setBookmarks((prevBookmarks) => {
             const updatedBookmarks = prevBookmarks.find((bookmark) => bookmark.title === article.title) ?
             prevBookmarks.filter((bookmark) => bookmark.title !== article.title) : [...prevBookmarks, article]
+            localStorage.setItem('bookmarks', JSON.stringify(updatedBookmarks))
             return updatedBookmarks
         })
     }
