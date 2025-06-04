@@ -9,7 +9,7 @@ const NewsModal = ({show, article, onClose}) => {
     return (
         <div className='modal-overlay'>
             <div className="modal-content">
-                <span className="close-button">
+                <span className="close-button" onClick={onClose}>
                     <i className="fa-solid fa-xmark"></i>
                 </span>
                 <img src={demoImg} alt="Modal Image" className='modal-image' />
