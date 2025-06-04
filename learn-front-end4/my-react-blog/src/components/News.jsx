@@ -73,7 +73,10 @@ const News = () => {
                         <a href="#" className='nav-link'>Science</a>
                         <a href="#" className='nav-link'>Health</a>
                         <a href="#" className='nav-link'>Nation</a>
-                        <a href="#" className='nav-link'>Bookmarks <i className="fa-regular fa-bookmark"></i></a>
+                        <a href="#" className='nav-link' onClick={() => 
+                            setShowBookmarksModal(true)
+                        }>
+                            Bookmarks <i className="fa-solid fa-bookmark"></i></a>
                     </div>
                 </nav>
             </div>
@@ -84,7 +87,7 @@ const News = () => {
                         {headline.title} <i 
                             className={`${
                             bookmarks.some((bookmark) => 
-                            bookmark.title === article.title) 
+                            bookmark.title === headline.title) 
                             ? "fa-solid" 
                             : "fa-regular"
                             } fa-regular fa-bookmark bookmark`} onClick={(e) =>
@@ -127,7 +130,13 @@ const News = () => {
             show={showModal} 
             article={selectedArticle} 
             onClose={() => setShowModal(false)} />
-            <Bookmark />
+            <Bookmark
+            show={showBookmarksModal}
+            bookmarks={bookmarks}
+            onClose={() => setShowBookmarksModal(false)}
+            onSelectArticle={handleArticleClick}
+            onDeleteBookmark={handleBookmarkClick}
+            />
             <div className="my-blogs">My blogs</div>
             <div className="weather-calendar">
                 <Weather/>
