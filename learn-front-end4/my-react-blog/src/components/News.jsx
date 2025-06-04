@@ -7,10 +7,26 @@ import techImg from '../assets/images/test2.png'
 import NewsModal from './NewsModal'
 
 const News = () => {
+    const articles = [
+        { id: 1, title: "Article 1", description: "Description 1", image: techImg },
+        { id: 2, title: "Article 2", description: "Description 2", image: techImg },
+        { id: 3, title: "Article 3", description: "Description 3", image: techImg },
+        { id: 4, title: "Article 4", description: "Description 4", image: techImg },
+        { id: 5, title: "Article 5", description: "Description 5", image: techImg },
+        { id: 6, title: "Article 6", description: "Description 6", image: techImg },
+    ]
+
+    const headline = {
+        id: 0,
+        title: "Main Headline",
+        description: "This is the main headline content",
+        image: techImg
+    };
+
     const [showModal, setShowModal] = useState(false)
     const [selectedArticle, setSeletedArticle] = useState(null)
 
-    const handleArticle = (article) => {
+    const handleArticleClick = (article) => {
         setSeletedArticle(article)
         setShowModal(true)
     }
@@ -50,35 +66,26 @@ const News = () => {
                 </nav>
             </div>
             <div className="news-section">
-                <div className="headline">
-                    <img src={techImg} alt="Headline Image" />
-                    <h2 className="headline-title">Lorem ipsum dolor sit amet. <i className="fa-regular fa-bookmark bookmark"></i></h2>
+                <div className="headline" onClick={() => handleArticleClick(headline)}>
+                    <img src={headline.image} alt="Headline Image" />
+                    <h2 className="headline-title">
+                        {headline.title} <i className="fa-regular fa-bookmark bookmark"></i>
+                    </h2>
                 </div>
+
                 <div className="news-grid">
-                    <div className="news-grid-item">
-                        <img src={techImg} alt="News Image" />
-                        <h3>Lorem ipsum dolor sit amet. <i className="fa-regular fa-bookmark bookmark"></i></h3>
+                    {articles.map((article) => (
+                    <div
+                        key={article.id}
+                        className="news-grid-item"
+                        onClick={() => handleArticleClick(article)}
+                    >
+                        <img src={article.image} alt="News Image" />
+                        <h3>
+                        {article.title} <i className="fa-regular fa-bookmark bookmark"></i>
+                        </h3>
                     </div>
-                    <div className="news-grid-item">
-                        <img src={techImg} alt="News Image" />
-                        <h3>Lorem ipsum dolor sit amet. <i className="fa-regular fa-bookmark bookmark"></i></h3>
-                    </div>
-                    <div className="news-grid-item">
-                        <img src={techImg} alt="News Image" />
-                        <h3>Lorem ipsum dolor sit amet. <i className="fa-regular fa-bookmark bookmark"></i></h3>
-                    </div>
-                    <div className="news-grid-item">
-                        <img src={techImg} alt="News Image" />
-                        <h3>Lorem ipsum dolor sit amet. <i className="fa-regular fa-bookmark bookmark"></i></h3>
-                    </div>
-                    <div className="news-grid-item">
-                        <img src={techImg} alt="News Image" />
-                        <h3>Lorem ipsum dolor sit amet. <i className="fa-regular fa-bookmark bookmark"></i></h3>
-                    </div>
-                    <div className="news-grid-item">
-                        <img src={techImg} alt="News Image" />
-                        <h3>Lorem ipsum dolor sit amet. <i className="fa-regular fa-bookmark bookmark"></i></h3>
-                    </div>
+                    ))}
                 </div>
             </div>
             <NewsModal 
