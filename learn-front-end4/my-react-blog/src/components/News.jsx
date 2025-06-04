@@ -27,9 +27,20 @@ const News = () => {
     const [showModal, setShowModal] = useState(false)
     const [selectedArticle, setSeletedArticle] = useState(null)
 
+    const [bookmarks, setBookmarks] = useState([])
+    const [showBookmarksModal, setShowBookmarksModal] = useState(false)
+
     const handleArticleClick = (article) => {
         setSeletedArticle(article)
         setShowModal(true)
+    }
+
+    const handleBookmarkClick = (article) => {
+        setBookmarks((prevBookmarks) => {
+            const updatedBookmarks = prevBookmarks.find((bookmark) => bookmark.title === article.title) ?
+            prevBookmarks.filter((bookmark) => bookmark.title !== article.title) : [...prevBookmarks, article]
+            return updatedBookmarks
+        })
     }
   return (
     <div className='news'>
@@ -70,7 +81,19 @@ const News = () => {
                 <div className="headline" onClick={() => handleArticleClick(headline)}>
                     <img src={headline.image} alt="Headline Image" />
                     <h2 className="headline-title">
-                        {headline.title} <i className="fa-regular fa-bookmark bookmark"></i>
+                        {headline.title} <i 
+                            className={`${
+                            bookmarks.some((bookmark) => 
+                            bookmark.title === article.title) 
+                            ? "fa-solid" 
+                            : "fa-regular"
+                            } fa-regular fa-bookmark bookmark`} onClick={(e) =>
+                                {
+                                   e.stopPropagation()
+                                   handleBookmarkClick(headline) 
+                                }
+                            }
+                            ></i>
                     </h2>
                 </div>
                 <div className="news-grid">
@@ -82,7 +105,19 @@ const News = () => {
                     >
                         <img src={article.image} alt="News Image" />
                         <h3>
-                        {article.title} <i className="fa-regular fa-bookmark bookmark"></i>
+                        {article.title} <i 
+                            className={`${
+                            bookmarks.some((bookmark) => 
+                            bookmark.title === article.title) 
+                            ? "fa-solid" 
+                            : "fa-regular"
+                            } fa-regular fa-bookmark bookmark`} onClick={(e) =>
+                                {
+                                   e.stopPropagation()
+                                   handleBookmarkClick(article) 
+                                }
+                            }
+                            ></i>
                         </h3>
                     </div>
                     ))}
