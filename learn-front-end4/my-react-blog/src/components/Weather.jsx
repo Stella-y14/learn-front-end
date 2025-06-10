@@ -22,11 +22,22 @@ const Weather = () => {
   const search = async () => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=Metric&appid=2df0b4fcdfcb4524b5599c8541488793`
     
-    const response = await axios.get(url) //http response
-
-    setData(response.data)
-    setLocation('') //reset the location after the search is complete
-    
+    //try catch if the data is not found
+    try {
+      const response = await axios.get(url) //http response
+      if (response.data.cod !== 200) {
+        setData({notFound: true})
+      } else {
+          setData(response.data)
+          setLocation('') //reset the location after the search is complete
+      }
+    } catch (error) {
+      if(error.response && error.response.status == 404) {
+        setData({notFound: true})
+      } else {
+        console.error("An unexpexted error occurred", error)
+      }
+    }
     console.log(data)
   }
 
@@ -72,12 +83,14 @@ const Weather = () => {
           <i className="fa-solid fa-magnifying-glass" onClick={search}></i>
         </div>
       </div>
-      <div className="weather-data">
+      {data.notFound ? (<div className='not-found'>Not Found</div>) : (
+        <div className="weather-data">
         {data.weather && data.weather[0] && getWeatherIcon(data.weather[0].main)}
             {/* accessing weather properties */}
         <div className="weather-type">{data.weather ? data.weather[0].main : null}</div> 
         <div className="temp">{data.main ? `${Math.floor(data.main.temp)}º` : null}</div>
       </div>
+      )}
     </div>
   )
 }
