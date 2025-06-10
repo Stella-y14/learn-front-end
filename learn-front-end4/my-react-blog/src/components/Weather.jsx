@@ -43,7 +43,7 @@ const Weather = () => {
         <i className='bx bxs-sun' ></i> 
             {/* accessing weather properties */}
         <div className="weather-type">{data.weather ? data.weather[0].main : null}</div> 
-        <div className="temp">28º</div>
+        <div className="temp">{data.main ? `${Math.floor(data.main.temp)}º` : null}</div>
       </div>
     </div>
   )
