@@ -14,7 +14,7 @@ const Weather = () => {
           <i className="fa-solid fa-magnifying-glass"></i>
         </div>
       </div>
-      <div className="weather-date">
+      <div className="weather-data">
         <i className='bx bxs-sun' ></i> 
       </div>
     </div>
