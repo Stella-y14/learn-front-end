@@ -45,6 +45,13 @@ const Weather = () => {
     setLocation(e.target.value) //whenever user puts value, it takes it then set location
   }
 
+  //keyboard event
+  const handleKeyDown = (e) => {
+    if(e.key === 'Enter') {
+      search()
+    }
+  }
+
   //function dynamic Icons
   const getWeatherIcon = (weatherType) => {
     switch(weatherType) {
@@ -79,6 +86,7 @@ const Weather = () => {
             placeholder='Enter Location' 
             value={location}
             onChange={handleInputChange} 
+            onKeyDown={handleKeyDown}
           />
           <i className="fa-solid fa-magnifying-glass" onClick={search}></i>
         </div>
