@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import axios from 'axios' //need to be installed. npm i axios
 import './Weather.css'
 
@@ -6,6 +6,18 @@ const Weather = () => {
   //store weather data
   const[data, setData] = useState({})
   const[location, setLocation] = useState('')
+
+  //to have default location of weather
+  useEffect(() => {
+    const fetchDefaultLocation = async () => {
+      const defaultLocation = "Seoul"
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${defaultLocation}&units=Metric&appid=2df0b4fcdfcb4524b5599c8541488793`
+      
+      const response = await axios.get(url) //http response
+      setData(response.data)
+    }
+    fetchDefaultLocation()
+  }, [])
 
   const search = async () => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=Metric&appid=2df0b4fcdfcb4524b5599c8541488793`
