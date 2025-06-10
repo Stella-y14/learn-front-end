@@ -22,6 +22,27 @@ const Weather = () => {
     setLocation(e.target.value) //whenever user puts value, it takes it then set location
   }
 
+  //function dynamic Icons
+  const getWeatherIcon = (weatherType) => {
+    switch(weatherType) {
+      case "Clear":
+        return <i className='bx bxs-sun'></i>
+      case "Clouds":
+        return <i className='bx bxs-cloud'></i>
+      case "Rain":
+        return <i className='bx bxs-cloud-rain'></i>
+      case "Thunderstorm":
+        return <i className='bx bxs-cloud-lightning'></i>
+      case "Snow":
+        return <i className='bx bxs-cloud-snow'></i>
+      case "Haze":
+      case "Mist":
+        return <i className='bx bxs-cloud'></i>
+      default:
+        return <i className='bx bxs-cloud'></i>
+    }
+  }
+
   return (
     <div className='weather'>
       <div className="search">
@@ -40,7 +61,7 @@ const Weather = () => {
         </div>
       </div>
       <div className="weather-data">
-        <i className='bx bxs-sun' ></i> 
+        {data.weather && data.weather[0] && getWeatherIcon(data.weather[0].main)}
             {/* accessing weather properties */}
         <div className="weather-type">{data.weather ? data.weather[0].main : null}</div> 
         <div className="temp">{data.main ? `${Math.floor(data.main.temp)}º` : null}</div>
