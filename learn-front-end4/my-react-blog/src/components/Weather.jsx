@@ -8,7 +8,7 @@ const Weather = () => {
   const[location, setLocation] = useState('')
 
   const search = async () => {
-    const url = 'https://api.openweathermap.org/data/2.5/weather?q=${location}&units=Metric&appid=2df0b4fcdfcb4524b5599c8541488793'
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=Metric&appid=2df0b4fcdfcb4524b5599c8541488793`
     
     const response = await axios.get(url) //http response
 
@@ -27,12 +27,15 @@ const Weather = () => {
       <div className="search">
         <div className="search-top">
           <i className="fa-solid fa-location-dot"></i>
-          <div className="location">Tbilisi</div>
+          <div className="location">{data.name}</div>
         </div>
         <div className="search-location">
-          <input type="text" placeholder='Enter Location' 
-          value={location}
-          onClick={handleInputChange} />
+          <input 
+            type="text" 
+            placeholder='Enter Location' 
+            value={location}
+            onChange={handleInputChange} 
+          />
           <i className="fa-solid fa-magnifying-glass" onClick={search}></i>
         </div>
       </div>
