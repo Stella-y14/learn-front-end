@@ -1,5 +1,6 @@
 import React from 'react'
 import userImg from '../assets/images/test1.png'
+import './Blogs.css'
 
 const Blogs = () => {
   return (
