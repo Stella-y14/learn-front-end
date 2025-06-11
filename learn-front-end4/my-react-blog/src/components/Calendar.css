@@ -77,3 +77,10 @@
     align-items: center;
     cursor: pointer;
 }
+
+.current-day {
+    font-size: 1.5rem !important;
+    color: #fff;
+    background: linear-gradient(to right, #b88efc, #6877f4);
+    border-radius: 50%;
+}
