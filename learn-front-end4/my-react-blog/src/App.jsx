@@ -2,6 +2,7 @@
 import React from 'react'
 import News from './components/News'
 import Blogs from './components/Blogs'
+import 'boxicons/css/boxicons.min.css';
 
 const App = () => {
   return (
