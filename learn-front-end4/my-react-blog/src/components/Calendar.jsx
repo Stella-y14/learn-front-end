@@ -28,14 +28,24 @@ const Calendar = () => {
 
   console.log(currentMonth, currentYear, daysInMonth, firstDayOfMonth)//currentMonth index starts from 0, so it is 5 if it is june
 
+  const prevMonth = () => {
+    setCurrentMonth((prevMonth) => (prevMonth === 11 ? 0 : prevMonth + 1))
+    setCurrentYear((prevYear) => (currentMonth === 11 ? prevYear + 1 : prevYear))
+  }
+
+  const nextMonth = () => {
+    setCurrentMonth((prevMonth) => (prevMonth === 0 ? 11 : prevMonth - 1))
+    setCurrentYear((prevYear) => (currentMonth === 0 ? prevYear - 1 : prevYear))
+  }
+
   return (
     <div className='calendar'>
       <div className="navigate-date">
         <h2 className="month">{monthsOfYear[currentMonth]},</h2>
         <h2 className="year">{currentYear}</h2>
         <div className="buttons">
-          <i className="bx bx-chevron-left"></i>
-          <i className="bx bx-chevron-right"></i>
+          <i className="bx bx-chevron-left" onClick={prevMonth}></i>
+          <i className="bx bx-chevron-right" onClick={nextMonth}></i>
         </div>
       </div>
       <div className="weekdays">
