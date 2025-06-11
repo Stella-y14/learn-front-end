@@ -1,7 +1,29 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './Calendar.css'
 
 const Calendar = () => {
+  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+  const monthsOfYear = [
+    "January", 
+    "February", 
+    "March", 
+    "April", 
+    "May", 
+    "June", 
+    "July", 
+    "August", 
+    "September", 
+    "October", 
+    "November", 
+    "December"]
+  const currentDate = new Date()
+
+  const [currentMonth, setCurrentMonth] = useState (currentDate.getMonth())
+
+  const [currentYear, setCurrentYear] = useState (currentDate.getFullYear())
+
+  console.log(currentMonth, currentYear)//currentMonth index starts from 0, so it is 5 if it is june
+
   return (
     <div className='calendar'>
       <div className="navigate-date">
