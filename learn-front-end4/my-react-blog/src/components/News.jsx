@@ -149,7 +149,10 @@ const News = () => {
                 <Calendar/>
             </div>
         </div>
-        <footer className="news-footer">Footer</footer>
+        <footer className="news-footer">
+            <p><span>News & Blogs App</span></p>
+            <p>&copy; Stella</p>
+        </footer>
     </div>
   )
 }
