@@ -1,16 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import userImg from '../assets/images/test1.png'
 import './Blogs.css'
 
-const Blogs = () => {
-  return (
+const Blogs = ({onBack}) => {
+    const [showForm, setShowForm] = useState(false)
+    return (
     <div className='blogs'>
         <div className="blogs-left">
             <img src={userImg} alt="User Image" />
         </div>
         <div className="blogs-right">
-            {/* <button className="post-btn">Create New Post</button> */}
-            <div className="blogs-right-form">
+            {showForm ? (
+                <div className="blogs-right-form">
                 <h1>New Post</h1>
                 <form>
                     <div className="img-upload">
@@ -26,10 +27,11 @@ const Blogs = () => {
                     </button>
                 </form>
             </div>
-            <button className="blogs-close-btn">Back <i className="bx bx-chevron-right"></i></button>
+            ) : <button className="post-btn" onClick={() => setShowForm(true)}>Create New Post</button>}
+            <button className="blogs-close-btn" onClick={onBack}>Back <i className="bx bx-chevron-right"></i></button>
         </div>
     </div>
-  )
+    )
 }
 
 export default Blogs

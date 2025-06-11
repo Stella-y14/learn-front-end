@@ -7,7 +7,7 @@ import techImg from '../assets/images/test2.png'
 import NewsModal from './NewsModal'
 import Bookmark from './Bookmark'
 
-const News = () => {
+const News = ({onShowBlogs}) => {
     useEffect(() => {
         const savedBookmarks = JSON.parse(localStorage.getItem("bookmarks")) || []
         setBookmarks(savedBookmarks)
@@ -63,7 +63,7 @@ const News = () => {
         </header>
         <div className="news-content">
             <div className='navbar'>
-                <div className='user'>
+                <div className='user' onClick={onShowBlogs}>
                     <img src={userImg} alt="User Image" />
                     <p>Mary's Blog</p>
                 </div>
